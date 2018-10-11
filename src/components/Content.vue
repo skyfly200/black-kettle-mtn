@@ -23,20 +23,17 @@
           p "Mount Evans with Summit Lake" by Boilerinbtown
           |
           a(href="https://creativecommons.org/licenses/by-sa/3.0/") CC BY-SA 3.0
-    Counter
     Form
     .map
       iframe(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=mt%20eavns&key=AIzaSyDu3M2o0VgXe_OgfQy9ub5dffvAExdRrfc&maptype=satellite" allowfullscreen)
 </template>
 
 <script>
-import Counter from './Counter.vue';
 import Form from './Form.vue';
 
 export default {
   name: 'Content',
   components: {
-    Counter,
     Form,
   },
 };
@@ -59,6 +56,7 @@ export default {
   .mtn-img
     img
       width: 100%
+      margin-top: 1em
     .attribution
       font-size: 0.65em
       line-height: 1.1em

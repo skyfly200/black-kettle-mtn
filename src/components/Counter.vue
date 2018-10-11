@@ -2,7 +2,8 @@
   .counter
     .meter
       span(:style="{ width: (count / goal <= 0.01 ? 1 : count / goal * 100) + '%' }")
-    h3 {{ count }} of {{ goal }} {{ unit }}
+    .caption
+      h3 {{ count }} of {{ goal }} {{ unit }}
 </template>
 
 <script>
@@ -27,7 +28,7 @@ export default {
     -webkit-border-radius: 25px
     border-radius: 25px
     padding: 10px
-    margin: 20px 10px 0 10px
+    margin: 0px 10px
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3)
     span
       display: block
@@ -41,4 +42,6 @@ export default {
       box-shadow: inset 0 2px 9px  rgba(255,255,255,0.3), inset 0 -2px 6px rgba(0,0,0,0.4)
       position: relative
       overflow: hidden
+  .caption h3
+    margin: 0.2em 0 1em 0
 </style>

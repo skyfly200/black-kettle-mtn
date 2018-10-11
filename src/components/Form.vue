@@ -1,5 +1,6 @@
 <template lang="pug">
   .form
+    Counter
     input(v-model="name" placeholder="John Doe")
     input(v-model="email" placeholder="example@example.com")
     input(v-model="zip" placeholder="Zip Code")
@@ -8,8 +9,13 @@
 </template>
 
 <script>
+import Counter from './Counter.vue';
+
 export default {
   name: 'Form',
+  components: {
+    Counter,
+  },
   data: function () {
     return {
       name: '',
@@ -30,14 +36,20 @@ export default {
     align-items: center
     justify-content: center
     box-shadow: 0 0 0.5em rgba(0,0,0,0.5)
+    .counter
+      width: 100%
     input
       width: 30%
       padding: 0.5em
+      border: 0
+      box-shadow: 0 0 1px black
     textarea
       width: 50%
       height: 4em
       margin: 10px 20% 0 20%
       padding: 0.5em
+      border: 0
+      box-shadow: 0 0 1px black
     button
       margin: 20px 0px 0px 0px
       padding: 10px 20px
