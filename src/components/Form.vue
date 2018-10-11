@@ -3,9 +3,7 @@
     input(v-model="name" placeholder="John Doe")
     input(v-model="email" placeholder="example@example.com")
     input(v-model="zip" placeholder="Zip Code")
-    br
     textarea(v-model="message" placeholder="Message(optional)" width='100%')
-    br
     button Sign the petition
 </template>
 
@@ -25,16 +23,20 @@ export default {
 
 <style lang="sass">
   .form
+    display: flex
+    flex-wrap: wrap
     padding: 20px 0
     margin: 20px 0
-    border: solid rgba(0, 0, 0, 0.5) 1px
+    align-items: center
+    justify-content: center
     box-shadow: 0 0 0.5em rgba(0,0,0,0.5)
     input
+      width: 30%
       padding: 0.5em
     textarea
-      width: 20em
+      width: 50%
       height: 4em
-      margin-top: 10px
+      margin: 10px 20% 0 20%
       padding: 0.5em
     button
       margin: 20px 0px 0px 0px
@@ -51,4 +53,15 @@ export default {
         background-color: #FFFFFF
         color: black
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+    @media(max-width: 620px)
+      flex-direction: column
+      input
+        width: 90%
+        padding: 2%
+        margin: 2%
+      textarea
+        width: 90%
+        padding: 2%
+        margin: 2%
+        height: 3EM
 </style>

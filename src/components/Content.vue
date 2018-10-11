@@ -26,7 +26,7 @@
     Counter
     Form
     .map
-      iframe(width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=mt%20eavns&key=AIzaSyDu3M2o0VgXe_OgfQy9ub5dffvAExdRrfc&maptype=satellite" allowfullscreen)
+      iframe(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=mt%20eavns&key=AIzaSyDu3M2o0VgXe_OgfQy9ub5dffvAExdRrfc&maptype=satellite" allowfullscreen)
 </template>
 
 <script>
@@ -45,15 +45,18 @@ export default {
 <style lang="sass">
   .content
     margin: 20px
+    align-items: center
+    @media(max-width: 620px)
+      margin: 0
   .message
-    display: grid
-    grid: "mtn-img message-heading" 50% "blurb blurb" 50% / auto auto
+    display: flex
+    flex-direction: row-reverse
+    @media(max-width: 620px)
+      flex-direction: column
 
   .message-heading
-    grid-area: message-heading
     margin: 0 3%
   .mtn-img
-    grid-area: mtn-img
     img
       width: 100%
     .attribution
@@ -61,4 +64,8 @@ export default {
       line-height: 1.1em
       p
         margin: 0
+  .map iframe
+    width: 100%
+    height: 450px
+    border: 0
 </style>

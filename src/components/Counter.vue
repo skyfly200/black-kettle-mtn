@@ -27,7 +27,7 @@ export default {
     -webkit-border-radius: 25px
     border-radius: 25px
     padding: 10px
-    margin-top: 20px
+    margin: 20px 10px 0 10px
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3)
     span
       display: block
