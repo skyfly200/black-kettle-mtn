@@ -24,25 +24,27 @@
           |
           a(href="https://creativecommons.org/licenses/by-sa/3.0/") CC BY-SA 3.0
     Counter
-    .call-to-action
-      a(href="#join")
-        button Sign the petition
+    Form
     .map
       iframe(width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=mt%20eavns&key=AIzaSyDu3M2o0VgXe_OgfQy9ub5dffvAExdRrfc&maptype=satellite" allowfullscreen)
 </template>
 
 <script>
 import Counter from './Counter.vue';
+import Form from './Form.vue';
 
 export default {
   name: 'Content',
   components: {
     Counter,
+    Form,
   },
 };
 </script>
 
 <style lang="sass">
+  .content
+    margin: 20px
   .message
     display: grid
     grid: "mtn-img message-heading" 50% "blurb blurb" 50% / auto auto
@@ -59,14 +61,4 @@ export default {
       line-height: 1.1em
       p
         margin: 0
-  .call-to-action button
-    margin-bottom: 30px
-    font-size: 1.5em
-    -webkit-transition-duration: 0.4s
-    transition-duration: 0.4s
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
-    border-radius: 8px
-    &:hover
-      background-color: #4CAF50
-      color: white
 </style>
