@@ -1,6 +1,7 @@
 <template lang="pug">
   #app
-    Header
+    video(id="bkg-video" playsinline autoplay muted loop)
+      source(src="./assets/video-bkg_2.mp4" type="video/mp4")
     Content
     Footer
 
@@ -8,14 +9,12 @@
 
 <script>
 
-import Header from './components/Header.vue';
 import Content from './components/Content.vue';
 import Footer from './components/Footer.vue';
 
 export default {
   name: 'app',
   components: {
-    Header,
     Content,
     Footer,
   },
@@ -26,6 +25,17 @@ export default {
 body
   width: 100%
   margin: 0
+
+video
+    position: fixed
+    top: 50%
+    left: 50%
+    min-width: 100%
+    min-height: 100%
+    width: auto
+    height: auto
+    z-index: -100
+    transform: translateX(-50%) translateY(-50%)
 
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif

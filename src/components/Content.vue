@@ -15,14 +15,13 @@
         | Evans ordered the sand creek masacure.
         | We should not honor this attrocity by having a mountian named after him.
         p
-        | We propose to change the name to Black Kettle Mountain,
+        | We propose the name be changed to Black Kettle Mountain,
         | honoring the chief of the Southern Arapaho tribe at the time.
-      .mtn-img
-        img(src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Mt_Evans.JPG" title="Mt Evans")
-        .attribution
-          p "Mount Evans with Summit Lake" by Boilerinbtown
-          |
-          a(href="https://creativecommons.org/licenses/by-sa/3.0/") CC BY-SA 3.0
+        |
+        a(href="https://en.wikipedia.org/wiki/Black_Kettle") Learn About Black Kettle
+        ul.faq
+          li Mount Evans is a 14er with an elevation of 14,265 feet
+          li Mount Evans Scenic Byway is the highest paved road in North America
     Form
     .map
       iframe(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=mt%20eavns&key=AIzaSyDu3M2o0VgXe_OgfQy9ub5dffvAExdRrfc&maptype=satellite" allowfullscreen)
@@ -43,27 +42,17 @@ export default {
   .content
     margin: 20px
     align-items: center
+    display: flex
+    flex-direction: column
     @media(max-width: 620px)
       margin: 0
-  .message
-    display: flex
-    flex-direction: row-reverse
-    @media(max-width: 620px)
-      flex-direction: column
 
   .message-heading
     margin: 0 3%
-  .mtn-img
-    img
-      width: 100%
-      margin-top: 1em
-    .attribution
-      font-size: 0.65em
-      line-height: 1.1em
-      p
-        margin: 0
-  .map iframe
+  .map
     width: 100%
-    height: 450px
-    border: 0
+    iframe
+      width: 100%
+      height: 450px
+      border: 0
 </style>
