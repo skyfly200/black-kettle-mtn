@@ -1,21 +1,27 @@
 <template lang="pug">
-  .form
+  .form-container
+    .form-header
+      h1 Sign The Petition
     Counter
-    input(v-model="name" placeholder="John Doe")
-    input(v-model="email" placeholder="example@example.com")
-    input(v-model="zip" placeholder="Zip Code")
-    textarea(v-model="message" placeholder="Message(optional)" width='100%')
-    button Sign the petition
+    form.form
+      input(v-model="name" placeholder="John Doe")
+      input(v-model="email" placeholder="example@example.com")
+      input(v-model="zip" placeholder="Zip Code")
+      textarea(v-model="message" placeholder="Message(optional)" width='100%')
+      button Submit
 </template>
 
 <script>
 import Counter from './Counter.vue';
+import Social from './Social.vue';
 
 export default {
   name: 'Form',
   components: {
     Counter,
+    Social,
   },
+  // eslint-disable-next-line
   data: function () {
     return {
       name: '',
@@ -28,14 +34,13 @@ export default {
 </script>
 
 <style lang="sass">
-  .form
+  .form-container
     display: flex
     flex-wrap: wrap
     padding: 20px 0
     margin: 20px 0
     align-items: center
     justify-content: center
-    box-shadow: 0 0 0.5em rgba(0,0,0,0.5)
     .counter
       width: 100%
     input
@@ -54,17 +59,6 @@ export default {
       margin: 20px 0px 0px 0px
       padding: 10px 20px
       font-size: 2em
-      -webkit-transition-duration: 0.4s
-      transition-duration: 0.4s
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)
-      border-radius: 8px
-      background-color: #4CAF50
-      color: white
-      border: 0
-      &:hover
-        background-color: #FFFFFF
-        color: black
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
     @media(max-width: 620px)
       flex-direction: column
       input

@@ -9,6 +9,7 @@
 <script>
 export default {
   name: 'Counter',
+  // eslint-disable-next-line
   data: function () {
     return {
       count: 0,
