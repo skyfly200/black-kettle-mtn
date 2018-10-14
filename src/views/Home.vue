@@ -17,18 +17,18 @@
         |
         a(href="https://en.wikipedia.org/wiki/Black_Kettle") Learn About Black Kettle
       .menu
-        router-link to="/sign"
+        router-link(to="/sign")
           button Sign The Petition
-        router-link to="/mtn
+        router-link(to="/mtn")
           button The Mountain
-        router-link to="/history
+        router-link(to="/history")
           button History
       Social
 
 </template>
 
 <script>
-import Social from './Social.vue';
+import Social from '../components/Social.vue';
 
 export default {
   name: 'Home',

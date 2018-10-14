@@ -4,7 +4,6 @@
       source(src="./assets/video-bkg_2.mp4" type="video/mp4")
       div
     .content
-      Home
       router-view
       Footer
 

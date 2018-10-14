@@ -1,5 +1,6 @@
 <template lang="pug">
   .history
+    HomeLink
     h1 Some Relevant History
     p
       | The beginning of the American Civil War, in 1861, led to the organization of military
@@ -26,8 +27,13 @@
 </template>
 
 <script>
+import HomeLink from '../components/HomeLink.vue';
+
 export default {
   name: 'History',
+  components: {
+    HomeLink,
+  },
 };
 </script>
 

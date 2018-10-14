@@ -1,25 +1,29 @@
 <template lang="pug">
-  .form-container
-    .form-header
-      h1 Sign The Petition
-    Counter
-    form.form
-      input(v-model="name" placeholder="John Doe")
-      input(v-model="email" placeholder="example@example.com")
-      input(v-model="zip" placeholder="Zip Code")
-      textarea(v-model="message" placeholder="Message(optional)" width='100%')
-      button Submit
+  .form-page
+    HomeLink
+    .form-container
+      .form-header
+        h1 Sign The Petition
+      Counter
+      form.form
+        input(v-model="name" placeholder="John Doe")
+        input(v-model="email" placeholder="example@example.com")
+        input(v-model="zip" placeholder="Zip Code")
+        textarea(v-model="message" placeholder="Message(optional)" width='100%')
+        button Submit
 </template>
 
 <script>
-import Counter from './Counter.vue';
-import Social from './Social.vue';
+import Counter from '../components/Counter.vue';
+import Social from '../components/Social.vue';
+import HomeLink from '../components/HomeLink.vue';
 
 export default {
   name: 'Form',
   components: {
     Counter,
     Social,
+    HomeLink,
   },
   // eslint-disable-next-line
   data: function () {
