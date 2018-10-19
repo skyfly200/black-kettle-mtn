@@ -21,7 +21,7 @@ export default {
   },
   mounted: function () {
     this.axios
-      .get('http://black-kettle-mountain.appspot.com/count')
+      .get('https://black-kettle-mountain.appspot.com/count')
       .then(response => (this.count = response.data.count))
       .catch(error => console.log(error))
   },
