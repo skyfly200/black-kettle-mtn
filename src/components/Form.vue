@@ -2,14 +2,14 @@
   .form
     .form-header
       h1 Sign The Petition
-    form(id="signature" action="https://black-kettle-mountain.appspot.com/submit" method="post")
-      input(v-model="firstName" placeholder="First Name" type="text" name="firstName" required)
-      input(v-model="lastName" placeholder="Last Name" type="text" name="lastName" required)
-      input(v-model="email" placeholder="Email" type="email" name="email" required)
-      input(v-model="city" placeholder="City" type="text" name="city" required)
-      input(v-model="state" placeholder="State" type="text" name="state" required)
-      input(v-model.number="zip" placeholder="Zip Code" type="text" name="zip" required)
-      textarea(v-model="message" placeholder="Personal Message (optional)" name="message" width='100%')
+    form(id="signature" @submit.prevent="handleSubmit")
+      input(v-model="form.firstName" placeholder="First Name" type="text" name="firstName" required)
+      input(v-model="form.lastName" placeholder="Last Name" type="text" name="lastName" required)
+      input(v-model="form.email" placeholder="Email" type="email" name="email" required)
+      input(v-model="form.city" placeholder="City" type="text" name="city" required)
+      input(v-model="form.state" placeholder="State" type="text" name="state" required)
+      input(v-model.number="form.zip" placeholder="Zip Code" type="text" name="zip" required)
+      textarea(v-model="form.message" placeholder="Personal Message (optional)" name="message" width='100%')
       p.errors(v-if="errors.length")
         b Please correct the following error(s):
         ul
@@ -24,20 +24,32 @@ export default {
   data: function () {
     return {
       errors: [],
-      firstName: null,
-      lastName: null,
-      email: null,
-      city: null,
-      state: null,
-      zip: null,
-      message: null,
+      form: {
+        firstName: null,
+        lastName: null,
+        email: null,
+        city: null,
+        state: null,
+        zip: null,
+        message: null,
+      },
+      response: {},
     };
+  },
+  methods: {
+    handleSubmit () {
+      const postUrl = "https://black-kettle-mountain.appspot.com/submit";
+      this.axios
+        .post(postUrl, this.form)
+        .then( res => (this.response = res) )
+        .catch( error => (errors.push(error)) )
+    }
   },
 };
 </script>
 
 <style lang="sass">
-  .form-header
+  .form-header h1
     margin-bottom: 0
   #signature
     display: flex
