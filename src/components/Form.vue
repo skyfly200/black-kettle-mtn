@@ -2,7 +2,7 @@
   .form
     .form-header
       h1 Sign The Petition
-    form(id="signature" action="http://black-kettle-mountain.appspot.com/submit" method="post")
+    form(id="signature" action="https://black-kettle-mountain.appspot.com/submit" method="post")
       input(v-model="firstName" placeholder="First Name" type="text" name="firstName" required)
       input(v-model="lastName" placeholder="Last Name" type="text" name="lastName" required)
       input(v-model="email" placeholder="Email" type="email" name="email" required)
