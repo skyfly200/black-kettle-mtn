@@ -6,6 +6,8 @@
       input(v-model="firstName" placeholder="First Name" type="text" name="firstName" required)
       input(v-model="lastName" placeholder="Last Name" type="text" name="lastName" required)
       input(v-model="email" placeholder="Email" type="email" name="email" required)
+      input(v-model="city" placeholder="City" type="text" name="city" required)
+      input(v-model="state" placeholder="State" type="text" name="state" required)
       input(v-model.number="zip" placeholder="Zip Code" type="text" name="zip" required)
       textarea(v-model="message" placeholder="Personal Message (optional)" name="message" width='100%')
       p.errors(v-if="errors.length")
