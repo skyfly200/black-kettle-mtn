@@ -41,8 +41,11 @@ export default {
       const postUrl = "https://black-kettle-mountain.appspot.com/submit";
       this.axios
         .post(postUrl, this.form)
-        .then( res => (this.response = res) )
-        .catch( error => (errors.push(error)) )
+        .then( res => {
+          this.response = res;
+          this.$emit('form-sent', signature.firstName);
+        })
+        .catch( error => (console.log(error)) )
     }
   },
 };

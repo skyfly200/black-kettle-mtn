@@ -2,7 +2,7 @@
   .sign-page
     HomeLink
     Counter
-    Form(v-if="submited === false")
+    Form(v-if="submited === false" v-on:form-sent="onFormSent")
     .thanks(v-else)
       h1 Thank you {{ firstName }} for signing the petition!
       h3 Now will you help us spread the word?
@@ -29,6 +29,12 @@ export default {
       firstName: "",
     };
   },
+  methods: {
+    onFormSent: function (firstName) {
+      this.submited = true;
+      this.firstName = firstName._value;
+    }
+  }
 };
 </script>
 
