@@ -13,11 +13,11 @@ export default new Router({
     },
     {
       path: '/sign',
-      name: 'form',
+      name: 'sign',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Form.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/Sign.vue')
     },
     {
       path: '/history',

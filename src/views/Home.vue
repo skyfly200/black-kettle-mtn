@@ -11,11 +11,13 @@
         a(href="https://en.wikipedia.org/wiki/Mount_Evans#History") Wikipedia
       p
         | Evans ordered the sand creek masacure.
-        | We should not honor this attrocity by having a mountian named after him.
-        | We propose the name be changed to Black Kettle Mountain,
+        | We should not honor of grant him having a mountian named after him.
+        | We therefore propose the name be changed to Black Kettle Mountain,
         | honoring the chief of the Southern Cheyenne tribe at the time.
         |
         a(href="https://en.wikipedia.org/wiki/Black_Kettle") Learn About Black Kettle
+      p
+        | Sign the petition to help us reach the goal of 10,000 signatures. Then we will submit them to the governor of Colorado.
       .menu
         router-link(to="/sign")
           button Sign The Petition
@@ -50,8 +52,15 @@ export default {
     width: 100%
     margin: 2% 0
     display: flex
-    flex-wrap: wrap
     justify-content: center
     button
       width: 250px
+    @media(max-width: 950px)
+      button
+        font-size: 1.2em
+        width: 180px
+    @media(max-width: 720px)
+      flex-direction: column
+      button
+        width: 75%
 </style>

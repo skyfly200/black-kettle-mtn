@@ -1,5 +1,7 @@
 <template lang="pug">
   .counter
+    .header
+      h1 Help us reach our goal!
     .meter
       span(:style="{ width: (count / goal <= 0.01 ? 1 : count / goal * 100) + '%' }")
     .caption
@@ -16,6 +18,11 @@ export default {
       goal: 10000,
       unit: 'signatures',
     };
+  },
+  mounted: function () {
+    this.axios
+      .get('http://black-kettle-mountain.appspot.com/count')
+      .then(response => (this.count = response.count))
   },
 };
 </script>

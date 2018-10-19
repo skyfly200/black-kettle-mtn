@@ -11,7 +11,7 @@
 
 <script>
 import Home from './views/Home.vue';
-import Form from './views/Form.vue';
+import Sign from './views/Sign.vue';
 import Mtn from './views/Mtn.vue';
 import History from './views/History.vue';
 import Footer from './components/Footer.vue';
@@ -20,7 +20,7 @@ export default {
   name: 'app',
   components: {
     Home,
-    Form,
+    Sign,
     Mtn,
     History,
     Footer,
@@ -47,7 +47,7 @@ export default {
   a
     color: lightskyblue
 
-  button
+  button, .submit
     margin: 15px
     padding: 10px 10px
     font-size: 1.5em

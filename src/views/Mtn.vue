@@ -29,6 +29,9 @@ export default {
     width: 100%
     padding: 0
     text-align: center
+    display: flex
+    justify-content: center
+    margin-bottom: 20px
     li
-      width: 80%
+      padding: 5px 10px
 </style>
