@@ -47,6 +47,23 @@ export default {
   a
     color: lightskyblue
 
+  textarea
+    width: 58%
+    height: 8em
+    margin: 10px 20% 0 20%
+    padding: 0.5em
+    border: 0
+    box-shadow: 0 0 1px black
+    @media(max-width: 720px)
+      width: 84%
+      margin: 0 4% 0 4%
+      padding: 2%
+    @media(max-width: 550px)
+      width: 90%
+      padding: 2%
+      margin: 2% 0
+      height: 3EM
+
   button, .submit
     margin: 15px
     padding: 10px 10px

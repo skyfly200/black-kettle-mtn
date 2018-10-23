@@ -16,6 +16,7 @@
         | honoring the chief of the Southern Cheyenne tribe at the time.
         |
         a(href="https://en.wikipedia.org/wiki/Black_Kettle") Learn About Black Kettle
+      Counter
       p
         | Sign the petition to help us reach the goal of 10,000 signatures. Then we will submit them to the governor of Colorado.
       .menu
@@ -31,11 +32,13 @@
 
 <script>
 import Social from '../components/Social.vue';
+import Counter from '../components/Counter.vue';
 
 export default {
   name: 'Home',
   components: {
     Social,
+    Counter,
   },
 };
 

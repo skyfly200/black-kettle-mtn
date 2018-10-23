@@ -9,11 +9,9 @@
       input(v-model="form.city" placeholder="City" type="text" name="city" required)
       input(v-model="form.state" placeholder="State" type="text" name="state" required)
       input(v-model.number="form.zip" placeholder="Zip Code" type="text" name="zip" required)
-      textarea(v-model="form.message" placeholder="Personal Message (optional)" name="message" width='100%')
-      p.errors(v-if="errors.length")
-        b Please correct the following error(s):
-        ul
-          li.error-message(v-for="error in errors") {{ error }}
+      textarea(v-model="form.message" placeholder="Personal Message (optional)" name="message")
+      .errors(v-if="errors.length")
+        p.error-message(v-for="error in errors") {{ error }}
       input(type="submit").submit
 </template>
 
@@ -33,7 +31,6 @@ export default {
         zip: null,
         message: null,
       },
-      response: {},
     };
   },
   methods: {
@@ -42,10 +39,14 @@ export default {
       this.axios
         .post(postUrl, this.form)
         .then( res => {
-          this.response = res;
-          this.$emit('form-sent', signature.firstName);
+          if (res.status === 200) this.$emit('form-sent', res);
+          else if (res.status === 204) this.errors.push("Error: Existing Email");
+          else console.log(res.status);
         })
-        .catch( error => (console.log(error)) )
+        .catch( error => {
+          console.log(error);
+          this.errors.push("Error occured while saving");
+        });
     }
   },
 };
@@ -68,13 +69,6 @@ export default {
       padding: 0.5em
       border: 0
       box-shadow: 0 0 1px black
-    textarea
-      width: 70%
-      height: 8em
-      margin: 10px 20% 0 20%
-      padding: 0.5em
-      border: 0
-      box-shadow: 0 0 1px black
     button
       margin: 20px 0px 0px 0px
       padding: 10px 20px
@@ -88,19 +82,10 @@ export default {
       input
         width: 40%
         padding: 2%
-      textarea
-        width: 84%
-        margin: 0 4% 0 4%
-        padding: 2%
     @media(max-width: 550px)
       flex-direction: column
       input
         width: 90%
         margin: 2% 15px
-      textarea
-        width: 90%
-        padding: 2%
-        margin: 2% 15px
-        height: 3EM
 
 </style>

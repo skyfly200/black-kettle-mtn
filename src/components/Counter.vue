@@ -12,18 +12,16 @@
 export default {
   name: 'Counter',
   // eslint-disable-next-line
+  props: {
+    count: {
+      type: Number,
+    }
+  },
   data: function () {
     return {
-      count: 0,
       goal: 10000,
       unit: 'signatures',
     };
-  },
-  mounted: function () {
-    this.axios
-      .get('https://black-kettle-mountain.appspot.com/count')
-      .then(response => (this.count = response.data.count))
-      .catch(error => console.log(error))
   },
 };
 </script>
