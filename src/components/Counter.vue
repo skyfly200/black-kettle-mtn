@@ -11,17 +11,16 @@
 <script>
 export default {
   name: 'Counter',
-  // eslint-disable-next-line
-  props: {
-    count: {
-      type: Number,
-    }
-  },
   data: function () {
     return {
       goal: 10000,
       unit: 'signatures',
     };
+  },
+  computed: {
+    count () {
+      return this.$store.state.count
+    }
   },
 };
 </script>

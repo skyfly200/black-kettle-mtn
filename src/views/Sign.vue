@@ -3,14 +3,15 @@
     HomeLink
     .sign-view(v-if="submited === false")
       Counter(v-bind:countp=count)
+      .form-header
+        h1 Sign The Petition
       .petition
-        h3 Petition Text
         textarea(disabled) Insert Petition Text Here!!!
-      Form(v-on:form-sent="onFormSent")
+      Form()
     .thanks(v-else)
         Counter(v-bind:countp=count)
         h1 Thank you {{ firstName }} for signing the petition!
-        h2 You were signer number {{ count }}
+        h2 Your submission was signature number {{ count }}
         h3 Now will you help us spread the word?
         Social
 </template>
@@ -29,28 +30,18 @@ export default {
     Social,
     HomeLink,
   },
-  data: function () {
-    return {
-      submited: false,
-      firstName: "",
-      count: null,
-    };
-  },
-  mounted: function () {
-    this.getCount();
+  computed: {
+    count () {
+      return this.$store.state.count
+    },
+    firstName () {
+      return this.$store.state.entry.firstName
+    },
+    submited () {
+      return this.$store.state.submited
+    }
   },
   methods: {
-    getCount: function () {
-      this.axios
-        .get('https://black-kettle-mountain.appspot.com/count')
-        .then(response => (this.count = response.data.count))
-        .catch(error => console.log(error))
-    },
-    onFormSent: function (res) {
-      this.firstName = res.data.entry.firstName;
-      this.count = res.data.entry.count;
-      this.submited = true;
-    }
   }
 };
 </script>
@@ -62,4 +53,6 @@ export default {
     textarea:disabled
       color: #000
       background-color: #FFF
+  .form-header h1
+    margin-bottom: 0
 </style>

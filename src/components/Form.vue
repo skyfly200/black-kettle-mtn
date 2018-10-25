@@ -1,7 +1,5 @@
 <template lang="pug">
   .form
-    .form-header
-      h1 Sign The Petition
     form(id="signature" @submit.prevent="handleSubmit")
       input(v-model="form.firstName" placeholder="First Name" type="text" name="firstName" required)
       input(v-model="form.lastName" placeholder="Last Name" type="text" name="lastName" required)
@@ -35,13 +33,14 @@ export default {
   },
   methods: {
     handleSubmit () {
-      const postUrl = "https://black-kettle-mountain.appspot.com/submit";
+      this.errors = [];
       this.axios
-        .post(postUrl, this.form)
+        .post("https://black-kettle-mountain.appspot.com/submit", this.form)
         .then( res => {
-          if (res.status === 200) this.$emit('form-sent', res);
-          else if (res.status === 204) this.errors.push("Error: Existing Email");
-          else console.log(res.status);
+          console.log(res.data);
+          if (res.status === 200) this.$store.commit('submitted', res.data.entry);
+          else if (res.status === 204) this.errors.push("Error: Email Exiting");
+          else console.error(res.data);
         })
         .catch( error => {
           console.log(error);
@@ -53,8 +52,6 @@ export default {
 </script>
 
 <style lang="sass">
-  .form-header h1
-    margin-bottom: 0
   #signature
     display: flex
     flex-wrap: wrap
@@ -74,10 +71,18 @@ export default {
       padding: 10px 20px
       font-size: 2em
     .errors
-      width: 50%
-      padding: 0 25%
-      color: red
+      width: 60%
+      margin: 0 20%
       font-size: 1.3em
+      p
+        background-color: rgba(255,0,0,1)
+        padding: 2%
+      @media(max-width: 720px)
+        width: 90%
+        margin: 0 6%
+      @media(max-width: 550px)
+        width: 94%
+        margin: 0 6%
     @media(max-width: 720px)
       input
         width: 40%
