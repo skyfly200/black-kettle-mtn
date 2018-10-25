@@ -37,7 +37,6 @@ export default {
       this.axios
         .post("https://black-kettle-mountain.appspot.com/submit", this.form)
         .then( res => {
-          console.log(res.data);
           if (res.status === 200) this.$store.commit('submitted', res.data.entry);
           else if (res.status === 204) this.errors.push("Error: Email Exiting");
           else console.error(res.data);
