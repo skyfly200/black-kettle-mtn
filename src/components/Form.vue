@@ -6,10 +6,15 @@
       input(v-model="form.email" placeholder="Email" type="email" name="email" required)
       input(v-model="form.city" placeholder="City" type="text" name="city" required)
       input(v-model="form.state" placeholder="State" type="text" name="state" required)
-      input(v-model.number="form.zip" placeholder="Zip Code" type="text" name="zip" required)
+      input(v-model.number="form.zip" placeholder="Zip Code" type="text" name="zip" @change="checkZip" required)
       textarea(v-model="form.message" placeholder="Personal Message (optional)" name="message")
-      .errors(v-if="errors.length")
-        p.error-message(v-for="error in errors") {{ error }}
+      .newsletter-checkbox
+        input(v-model="form.newsletter" type="checkbox" name="newsletter" id="newsletter")
+        label(for="newsletter") Email me updates about the petition
+      .errors
+        p.error-message(v-if="errors.email.state") {{ errors.email.msg }}
+        p.error-message(v-if="errors.zip.state") {{ errors.zip.msg }}
+        p.error-message(v-if="errors.general.state") {{ errors.general.msg }}
       input(type="submit").submit
 </template>
 
@@ -19,7 +24,11 @@ export default {
   // eslint-disable-next-line
   data: function () {
     return {
-      errors: [],
+      errors: {
+        email: { state: false, msg: "" },
+        zip: { state: false, msg: "" },
+        general: { state: false, msg: "" },
+      },
       form: {
         firstName: null,
         lastName: null,
@@ -28,24 +37,43 @@ export default {
         state: null,
         zip: null,
         message: null,
+        newsletter: true,
       },
     };
   },
   methods: {
-    handleSubmit () {
-      this.errors = [];
+    handleSubmit() {
+      this.clearErrors();
       this.axios
         .post("https://black-kettle-mountain.appspot.com/submit", this.form)
         .then( res => {
           if (res.status === 200) this.$store.commit('submitted', res.data.entry);
-          else if (res.status === 204) this.errors.push("Error: Email Exiting");
+          else if (res.status === 204) this.showError('email', "Looks like you've already signed");
           else console.error(res.data);
         })
         .catch( error => {
           console.log(error);
-          this.errors.push("Error occured while saving");
+          this.showError('general', "Error occured while saving, please try again");
         });
-    }
+    },
+    checkZip() {
+      let valid = /^[0-9]{5}(?:-[0-9]{4})?$/.test(this.form.zip);
+      if (!valid) this.showError('zip', "Please input a valid US zip code");
+      else this.clearError('zip');
+    },
+    showError(type, msg) {
+      this.errors[type] = { state: true, msg: msg}
+    },
+    clearError(type) {
+      this.errors[type] = { state: false, msg: ""}
+    },
+    clearErrors(type, msg) {
+      this.errors = {
+        email: { state: false, msg: "" },
+        zip: { state: false, msg: "" },
+        general: { state: false, msg: "" },
+      };
+    },
   },
 };
 </script>
@@ -65,6 +93,13 @@ export default {
       padding: 0.5em
       border: 0
       box-shadow: 0 0 1px black
+    .newsletter-checkbox
+      width: 100%
+      margin-top: 10px
+    #newsletter
+      width: auto
+      box-shadow: none
+      padding: 0
     button
       margin: 20px 0px 0px 0px
       padding: 10px 20px

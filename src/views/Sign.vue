@@ -31,14 +31,14 @@ export default {
     HomeLink,
   },
   computed: {
-    count () {
-      return this.$store.state.count
+    count() {
+      return this.$store.state.count;
     },
-    firstName () {
-      return this.$store.state.entry.firstName
+    firstName() {
+      return this.$store.state.entry.firstName;
     },
-    submited () {
-      return this.$store.state.submited
+    submited() {
+      return this.$store.state.submited;
     }
   },
   methods: {
