@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     entry: {},
     count: 0,
+    sent: false,
     submited: false,
   },
   mutations: {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
       state.entry = entry;
       state.count = entry.count;
       state.submited = true;
+    },
+    sent(state, bool) {
+      state.sent = bool;
     },
   },
   actions: {

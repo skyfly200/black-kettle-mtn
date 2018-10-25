@@ -15,7 +15,7 @@
         p.error-message(v-if="errors.email.state") {{ errors.email.msg }}
         p.error-message(v-if="errors.zip.state") {{ errors.zip.msg }}
         p.error-message(v-if="errors.general.state") {{ errors.general.msg }}
-      input(type="submit").submit
+      input(type="submit" :disabled="sent").submit
 </template>
 
 <script>
@@ -41,8 +41,14 @@ export default {
       },
     };
   },
+  computed: {
+    sent() {
+      return this.$store.state.sent;
+    },
+  },
   methods: {
     handleSubmit() {
+      this.$store.commit('sent', true)
       this.clearErrors();
       this.axios
         .post("https://black-kettle-mountain.appspot.com/submit", this.form)
@@ -50,10 +56,12 @@ export default {
           if (res.status === 200) this.$store.commit('submitted', res.data.entry);
           else if (res.status === 204) this.showError('email', "Looks like you've already signed");
           else console.error(res.data);
+          this.$store.commit('sent', false)
         })
         .catch( error => {
           console.log(error);
           this.showError('general', "Error occured while saving, please try again");
+          this.$store.commit('sent', false)
         });
     },
     checkZip() {
