@@ -54,5 +54,5 @@ export default {
       color: #000
       background-color: #FFF
   .form-header h1
-    margin-bottom: 0
+    margin-bottom: 10px
 </style>
