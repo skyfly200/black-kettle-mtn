@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import LoadingComponent from './components/LoadingComponent.vue'
-import ErrorComponent from './components/ErrorComponent.vue'
+import LoadingComponent from './components/Loader.vue'
+import Error from './components/Error.vue'
 
 Vue.use(Router)
 
@@ -23,7 +23,7 @@ export default new Router({
       // A component to use while the async component is loading
       loading: LoadingComponent,
       // A component to use if the load fails
-      error: ErrorComponent,
+      error: Error,
     },
     {
       path: '/history',
@@ -35,7 +35,7 @@ export default new Router({
       // A component to use while the async component is loading
       loading: LoadingComponent,
       // A component to use if the load fails
-      error: ErrorComponent,
+      error: Error,
     },
     {
       path: '/mtn',
@@ -47,7 +47,15 @@ export default new Router({
       // A component to use while the async component is loading
       loading: LoadingComponent,
       // A component to use if the load fails
-      error: ErrorComponent,
-    }
+      error: Error,
+    },
+    {
+      path: '/error',
+      name: 'error',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "sign" */ './components/Error.vue'),
+    },
   ]
 })
