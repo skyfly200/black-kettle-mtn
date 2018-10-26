@@ -1,11 +1,14 @@
 <template lang="pug">
   .counter
     .header
-      h1 Help us reach our goal!
+      h1(v-if="!goalReached") Help us reach our goal!
+      .goal(v-else)
+        h1 Yay! We've reached our goal
+        h2 Now how many can we get?!?!
     .meter
       span(:style="{ width: (count / goal <= 0.01 ? 1 : count / goal * 100) + '%' }")
     .caption
-      h3 {{ count }} of {{ goal }} {{ unit }}
+      h3 {{ countText }} of {{ goalText }} {{ unit }}
 </template>
 
 <script>
@@ -20,7 +23,21 @@ export default {
   computed: {
     count () {
       return this.$store.state.count
+    },
+    goalText () {
+      return this.numberWithCommas(this.goal)
+    },
+    countText () {
+      return this.numberWithCommas(this.$store.state.count)
+    },
+    goalReached () {
+      return this.$store.state.count >= this.goal
     }
+  },
+  methods: {
+    numberWithCommas: (x) => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
   },
 };
 </script>
