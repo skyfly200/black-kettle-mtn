@@ -12,6 +12,7 @@
         Counter(v-bind:countp=count)
         h1 Thank you {{ firstName }} for signing the petition!
         h2 Your submission was signature number {{ count }}
+        h2(v-if="goalReached") You were the final signature we needed
         h3 Now will you help us spread the word?
         Social
 </template>
@@ -34,11 +35,17 @@ export default {
     count() {
       return this.$store.state.count;
     },
+    goal () {
+      return this.$store.state.goal
+    },
     firstName() {
       return this.$store.state.entry.firstName;
     },
     submited() {
       return this.$store.state.submited;
+    },
+    goalReached () {
+      return this.$store.state.count === this.goal
     }
   },
   methods: {

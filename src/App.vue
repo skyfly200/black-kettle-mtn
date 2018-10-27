@@ -28,7 +28,7 @@ export default {
   created() {
     this.axios
       .get('https://black-kettle-mountain.appspot.com/count')
-      .then(response => ( this.$store.commit('setCount', 10000) )) //response.data.count
+      .then(response => ( this.$store.commit('setCount', response.data.count) )) //
       .catch(error => console.log(error))
   },
 };

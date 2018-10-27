@@ -6,7 +6,7 @@
         h1 Yay! We've reached our goal
         h2 Now how many can we get?!?!
     .meter
-      span(:style="{ width: (count / goal <= 0.01 ? 1 : count / goal * 100) + '%' }")
+      span(:style="{ width: (animatedCount / goal <= 0.01 ? 1 : animatedCount / goal * 100) + '%' }")
     .caption
       h3 {{ countText }} of {{ goalText }} {{ unit }}
 </template>
@@ -16,7 +16,6 @@ export default {
   name: 'Counter',
   data: function () {
     return {
-      goal: 10000,
       unit: 'signatures',
     };
   },
@@ -24,20 +23,31 @@ export default {
     count () {
       return this.$store.state.count
     },
+    goal () {
+      return this.$store.state.goal
+    },
     goalText () {
-      return this.numberWithCommas(this.goal)
+      return this.numberWithCommas(this.$store.state.goal)
     },
     countText () {
       return this.numberWithCommas(this.$store.state.count)
     },
     goalReached () {
       return this.$store.state.count >= this.goal
-    }
+    },
+    animatedCount () {
+      return this.$store.state.count.toFixed(0);
+    },
   },
   methods: {
     numberWithCommas: (x) => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+  },
+  watch: {
+    count (newValue) {
+      TweenLite.to(this.count, 100, { animatedCount: newValue });
+    }
   },
 };
 </script>

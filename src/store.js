@@ -9,6 +9,7 @@ export default new Vuex.Store({
     count: 0,
     sent: false,
     submited: false,
+    goal: 10000,
   },
   mutations: {
     setCount (state, n) {
