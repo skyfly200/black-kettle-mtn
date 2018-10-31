@@ -16,12 +16,12 @@
       | detachment under Lieutenant George S. Eayre crossed into Kansas and encountered Cheyenne in
       | their summer buffalo-hunting camp at Big Bushes, near the Smoky Hill River. Cheyenne chiefs
       | Lean Bear and Star approached the soldiers to signal their peaceful intent, but they were
-      | shot down by Eayre's troops.[15] This incident touched off a war of retaliation by the
+      | shot down by Eayre's troops. This incident touched off a war of retaliation by the
       | Cheyenne in Kansas.
     p
-      | Damn any man who sympathizes with Indians! ... I have come to kill Indians, and believe it
+      | "Damn any man who sympathizes with Indians! ... I have come to kill Indians, and believe it
       | is right and honorable to use any means under God's heaven to kill Indians. ... Kill and
-      | scalp all, big and little; nits make lice.
+      | scalp all, big and little; nits make lice."
     p Col. John Milton Chivington
 
 </template>

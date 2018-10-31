@@ -46,7 +46,7 @@ export default {
   },
   watch: {
     count (newValue) {
-      TweenLite.to(this.count, 100, { animatedCount: newValue });
+      TweenLite.to(this.$data, 0.5, {animatedCount: newValue });
     }
   },
 };

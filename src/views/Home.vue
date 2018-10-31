@@ -1,7 +1,7 @@
 <template lang="pug">
   .message
     .message-heading
-      h1 Lets get Mt. Evans renamed to Black Kettle Mountain
+      h1 Let's get Mt. Evans renamed to Black Kettle Mountain
       p
         | "In 1895, 30 years after he was forced to resign as governor
         | because of his part in the infamous Sand Creek Massacre and its subsequent cover-up,
@@ -10,8 +10,8 @@
         |
         a(href="https://en.wikipedia.org/wiki/Mount_Evans#History") Wikipedia
       p
-        | Evans ordered the sand creek masacure.
-        | We should not honor of grant him having a mountian named after him.
+        | Evans ordered the sand creek massacre.
+        | We should not grant him the honor of having a mountian named after him.
         | We therefore propose the name be changed to Black Kettle Mountain,
         | honoring the chief of the Southern Cheyenne tribe at the time.
         |

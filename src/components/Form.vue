@@ -11,10 +11,12 @@
       .newsletter-checkbox
         input(v-model="form.newsletter" type="checkbox" name="newsletter" id="newsletter")
         label(for="newsletter") Email me updates about the petition
-      .errors
-        p.error-message(v-if="errors.email.state") {{ errors.email.msg }}
-        p.error-message(v-if="errors.zip.state") {{ errors.zip.msg }}
-        p.error-message(v-if="errors.general.state") {{ errors.general.msg }}
+      transition(name="error")
+        .errors
+          p.error-message(v-if="errors.email.state") {{ errors.email.msg }}
+          p.error-message(v-if="errors.zip.state") {{ errors.zip.msg }}
+          p.error-message(v-if="errors.general.state") {{ errors.general.msg }}
+      transition(name="submit")
       input(type="submit" v-if="!sent" value='Submit').submit
       Loader(v-if="sent")
 </template>
@@ -97,6 +99,18 @@ export default {
 </script>
 
 <style lang="sass">
+  .error-enter-active, .error-leave-active
+    transition: opacity 0.25s ease-out
+
+  .error-enter, .error-leave-to
+    opacity: 0
+
+  .submit-enter-active, .submit-leave-active
+    transition: opacity 0.25s ease-out
+
+  .submit-enter, .submit-leave-to
+    opacity: 0
+
   #signature
     display: flex
     flex-wrap: wrap
