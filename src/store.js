@@ -8,7 +8,7 @@ export default new Vuex.Store({
     entry: {},
     count: 0,
     sent: false,
-    submited: false,
+    submitted: false,
     goal: 10000,
   },
   mutations: {
@@ -18,13 +18,11 @@ export default new Vuex.Store({
     submitted (state, entry) {
       state.entry = entry;
       state.count = entry.count;
-      state.submited = true;
+      state.submitted = true;
     },
     sent(state, bool) {
       state.sent = bool;
     },
   },
-  actions: {
-
-  }
+  actions: {}
 })
